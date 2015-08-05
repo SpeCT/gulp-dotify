@@ -9,7 +9,7 @@ const PLUGIN_NAME = 'gulp-dotify';
 
 function getTemplateName(root, name, extension, separator) {
 	var parts = name.split(path.sep);
-	var i = parts.indexOf(root);
+	var i = parts.lastIndexOf(root);
 	parts = parts.slice(i + 1);
 	i = parts.length - 1;
 	parts[i] = path.basename(parts[i], extension);
