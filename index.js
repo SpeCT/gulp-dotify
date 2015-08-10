@@ -8,13 +8,17 @@ var PluginError = gutil.PluginError;
 const PLUGIN_NAME = 'gulp-dotify';
 
 function getTemplateName(root, name, extension, separator) {
-	var parts = name.split(path.sep);
-	var i = parts.lastIndexOf(root);
-	parts = parts.slice(i + 1);
-	i = parts.length - 1;
+	var i = name.lastIndexOf(root);
+  if (i !== -1) {
+    name = name.slice(i + root.length);
+  }
+  var trimRx = new RegExp('^\\' + path.sep + '|\\' + path.sep + '$', 'g');
+  var parts = name.replace(trimRx, '').split(path.sep);
+  i = parts.length - 1;
 	parts[i] = path.basename(parts[i], extension);
 	return parts.join(separator);
 }
+
 
 function getTemplateCode(content) {
 	return dot.template(content).toString();
