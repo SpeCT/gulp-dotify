@@ -46,7 +46,7 @@ JST['layout'] = function ...
 
 ## Options
 
-* root -- root folder, where templates are located (affects template name generation), `views` by default
+* root -- root folder, where templates are located (affects template name generation), can be a string or a function, converting template name to root value, `views` by default.
 * extension -- file extension of template files, `.html` by default
 * separator -- template namespace-name separator, `-` by default
 * dictionary -- template dictionary name, `JST` by default
